@@ -1,4 +1,4 @@
-Django-elRTE is an easy way to use elRTE rich text editor within Django without creating dependencies.
+Django-elRTE is an easy way to use `elRTE`_ rich text editor within Django without creating dependencies.
 
 elRTE is an open-source WYSIWYG HTML-editor written in JavaScript using jQuery UI. It features rich text editing, options for changing its appearance, style and many more. You can use it in any commercial or non-commercial projects.
 
@@ -10,6 +10,7 @@ elRTE uses and comes with jQuery and jQuery-UI which are issued under MIT and GP
 
 Django-elRTE is issued under the Apache 2 license.
 
-.. _Studio 42: http://www.std42.ru/
 
+.. _elRTE: http://elrte.org/
+.. _Studio 42: http://www.std42.ru/
 .. _ELDORADO.CMS: http://www.eldorado-cms.ru/
