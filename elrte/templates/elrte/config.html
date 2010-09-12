@@ -1,0 +1,10 @@
+<script type="text/javascript" charset="utf-8">
+$().ready(function(){
+	var opts = {
+	{% for key, val in options.items %}{{ key|safe }} : {{ val|safe }},
+	{% endfor %}fmOpen : function(callback) { }
+	    };
+	    var rte = $('#id_{{name}}').elrte(opts);
+	var rte = $('#id_{{name}}').elrte();
+});
+</script>

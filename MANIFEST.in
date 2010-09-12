@@ -1,0 +1,9 @@
+recursive-include doc_src *
+recursive-include docs *
+
+recursive-include django-elrte/media *
+recursive-include django-elrte/templates *
+
+include LICENSE
+include README
+include *.txt
