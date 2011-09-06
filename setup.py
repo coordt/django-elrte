@@ -17,7 +17,7 @@ setup(
     author_email = '',
     description = 'Django-elRTE is an easy way to use the elRTE rich text editor within Django without creating dependencies.',
     long_description = read_file('README.rst'),
-    packages = find_packages(),
+    packages = find_packages(exclude=['example']),
     include_package_data = True,
     install_requires=read_file('requirements.txt'),
     classifiers = [
