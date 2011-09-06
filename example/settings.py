@@ -84,7 +84,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.flatpages',
-    'elrte',
+    'django-elrte',
 )
 
 ELRTE_ADMIN_FIELDS = {

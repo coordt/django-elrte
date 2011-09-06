@@ -11,7 +11,7 @@ def read_file(filename):
 
 setup(
     name = "django-elrte",
-    version = __import__('elrte').get_version().replace(' ', '-'),
+    version = __import__('django-elrte').get_version().replace(' ', '-'),
     url = '',
     author = 'coordt',
     author_email = '',
