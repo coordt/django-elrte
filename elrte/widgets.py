@@ -16,7 +16,7 @@ import elrte.settings
 ELRTE_DEFAULT_OPTIONS = {
     'doctype': '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">',
     'cssClass': 'el-rte',
-    'cssfiles': ['%s../css/elrte-inner.css' % elrte.settings.JS_BASE_URL],
+    'cssfiles': ['%selrte-inner.css' % elrte.settings.CSS_BASE_URL],
     'absoluteURLs': True,
     'allowSource': True,
     'lang': 'en',
@@ -27,7 +27,7 @@ ELRTE_DEFAULT_OPTIONS = {
     # 'fmOpen': FileManagerOpener(),
 }
 
-ELRTE_LANG_INCLUSION = 'i18n/elrte.%s.js'
+ELRTE_LANG_INCLUSION = 'i18n/elrte.%s.js' % getattr(ELRTE_DEFAULT_OPTIONS, 'lang', 'en')
 
 
 class FileManagerOpener(object):
@@ -118,7 +118,8 @@ def get_language_config(content_language=None):
     else:
         config['directionality'] = 'ltr'
 
-    if elrte.settings.USE_SPELLCHECKER:
-        config['spellchecker_rpc_url'] = reverse('elrte.views.spell_check')
+#    TODO: Not implemented
+#    if elrte.settings.USE_SPELLCHECKER:
+#        config['spellchecker_rpc_url'] = reverse('elrte.views.spell_check')
 
     return config

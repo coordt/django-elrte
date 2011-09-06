@@ -1,9 +1,9 @@
 from django.test import TestCase
 
 
-class django-elrteTest(TestCase):
+class django_elrteTest(TestCase):
     """
     Tests for django-elrte
     """
-    def test_django-elrte(self):
+    def test_django_elrte(self):
         pass

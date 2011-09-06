@@ -18,6 +18,9 @@ ELRTE_DEBUG = getattr(settings, 'ELRTE_DEBUG', False)
 JS_BASE_URL = getattr(settings, 'ELRTE_JS_BASE_URL',
         os.path.join(settings.MEDIA_URL, 'elrte/js/'))
 
+CSS_BASE_URL = getattr(settings, 'ELRTE_JS_BASE_URL',
+        os.path.join(settings.MEDIA_URL, 'elrte/css/'))
+
 if ELRTE_DEBUG:
     URL = getattr(settings, 'ELRTE_JS_URL', '%selrte.full.js' % JS_BASE_URL)
 else:
@@ -29,22 +32,22 @@ LOAD_JQUERYUI = getattr(settings, 'ELRTE_LOAD_JQUERYUI', True)
 JS_URL = []
 
 if LOAD_JQUERY:
-    JS_URL.append("%sjquery-1.4.2.min.js" % JS_BASE_URL)
+    JS_URL.append("%sjquery-1.6.1.min.js" % JS_BASE_URL)
 
 if LOAD_JQUERYUI:
-    JS_URL.append("%sjquery-ui-1.8.4.custom.min.js" % JS_BASE_URL)
+    JS_URL.append("%sjquery-ui-1.8.13.custom.min.js" % JS_BASE_URL)
 
 JS_URL.append(URL)
 
 CSS_URL = []
 if LOAD_JQUERYUI:
     CSS_URL.append(
-        "%sui-themes/smoothness/jquery-ui-1.8.4.custom.css" % JS_BASE_URL
+        "%ssmoothness/jquery-ui-1.8.4.custom.css" % CSS_BASE_URL
     )
 
 CSS_URL.extend([
-    "%s../css/elrte.full.css" % JS_BASE_URL,
-    "%s../css/django-elrte.css" % JS_BASE_URL,
+    "%selrte.full.css" % CSS_BASE_URL,
+    "%sdjango-elrte.css" % CSS_BASE_URL,
 ])
 
 ADMIN_FIELDS = getattr(settings, 'ELRTE_ADMIN_FIELDS', {})
