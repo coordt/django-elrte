@@ -16,10 +16,10 @@ USE_FILEBROWSER = getattr(settings, 'ELRTE_FILEBROWSER', False)
 ELRTE_DEBUG = getattr(settings, 'ELRTE_DEBUG', False)
 
 JS_BASE_URL = getattr(settings, 'ELRTE_JS_BASE_URL',
-        os.path.join(settings.MEDIA_URL, 'elrte/js/'))
+        os.path.join(settings.STATIC_URL, 'elrte/js/'))
 
 CSS_BASE_URL = getattr(settings, 'ELRTE_JS_BASE_URL',
-        os.path.join(settings.MEDIA_URL, 'elrte/css/'))
+        os.path.join(settings.STATIC_URL, 'elrte/css/'))
 
 if ELRTE_DEBUG:
     URL = getattr(settings, 'ELRTE_JS_URL', '%selrte.full.js' % JS_BASE_URL)
@@ -42,7 +42,7 @@ JS_URL.append(URL)
 CSS_URL = []
 if LOAD_JQUERYUI:
     CSS_URL.append(
-        "%ssmoothness/jquery-ui-1.8.4.custom.css" % CSS_BASE_URL
+        "%ssmoothness/jquery-ui-1.8.13.custom.css" % CSS_BASE_URL
     )
 
 CSS_URL.extend([
