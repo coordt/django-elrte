@@ -16,7 +16,7 @@ import elrte.settings
 ELRTE_DEFAULT_OPTIONS = {
     'doctype': '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">',
     'cssClass': 'el-rte',
-    'cssfiles': ['%selrte-inner.css' % elrte.settings.CSS_BASE_URL],
+    'cssfiles': [f'{elrte.settings.CSS_BASE_URL}elrte-inner.css'],
     'absoluteURLs': True,
     'allowSource': True,
     'lang': 'en',
@@ -24,10 +24,11 @@ ELRTE_DEFAULT_OPTIONS = {
     'height': None,
     'fmAllow': True,
     'toolbar': 'normal',
-    # 'fmOpen': FileManagerOpener(),
 }
 
-ELRTE_LANG_INCLUSION = 'i18n/elrte.%s.js' % getattr(ELRTE_DEFAULT_OPTIONS, 'lang', 'en')
+ELRTE_LANG_INCLUSION = (
+    f"i18n/elrte.{getattr(ELRTE_DEFAULT_OPTIONS, 'lang', 'en')}.js"
+)
 
 
 class FileManagerOpener(object):
@@ -68,7 +69,7 @@ class ElrteTextareaWidget(forms.Textarea):
         final_attrs = self.build_attrs(attrs)
         final_attrs['name'] = name
         config = self.get_config(name)
-        html = [u'<textarea%s>%s</textarea>' % (flatatt(final_attrs), escape(value))]
+        html = [f'<textarea{flatatt(final_attrs)}>{escape(value)}</textarea>']
         html.append(u'<input type="hidden" name="%(name)s_img" id="%(name)s_img">' % {'name': name})
         html.append(config)
         return mark_safe(u'\n'.join(html))
@@ -91,25 +92,16 @@ class AdminElrteTextareaWidget(ElrteTextareaWidget, admin_widgets.AdminTextareaW
 
 def get_language_config(content_language=None):
     language = get_language()[:2]
-    if content_language:
-        content_language = content_language[:2]
-    else:
-        content_language = language
-
-    config = {}
-    config['language'] = language
-
+    content_language = content_language[:2] if content_language else language
+    config = {'language': language}
     lang_names = SortedDict()
     for lang, name in settings.LANGUAGES:
         if lang[:2] not in lang_names: lang_names[lang[:2]] = []
         lang_names[lang[:2]].append(_(name))
     sp_langs = []
     for lang, names in lang_names.items():
-        if lang == content_language:
-            default = '+'
-        else:
-            default = ''
-        sp_langs.append(u'%s%s=%s' % (default, ' / '.join(names), lang))
+        default = '+' if lang == content_language else ''
+        sp_langs.append(f"{default}{' / '.join(names)}={lang}")
 
     config['spellchecker_languages'] = ','.join(sp_langs)
 
